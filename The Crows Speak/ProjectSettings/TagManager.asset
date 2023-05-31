@@ -13,6 +13,7 @@ TagManager:
   - Pail
   - Tomato
   - Bucket
+  - Home
   layers:
   - Default
   - TransparentFX
