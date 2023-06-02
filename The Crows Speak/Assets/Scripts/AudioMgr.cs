@@ -22,6 +22,7 @@ public class AudioMgr : MonoBehaviour
 
     [SerializeField] AudioSource FootstepSounds;
     public AudioClip[] grassSounds;
+    public AudioClip[] stoneSounds;
 
     public AudioSource textSource;
 
@@ -53,13 +54,22 @@ public class AudioMgr : MonoBehaviour
     {
         textSource.PlayOneShot(sound);
     }
-    public void PlayFootstep()
+    public void PlayFootstep(string sound)
     {
         if (moveScript.controller.isGrounded)
         {
-            FootstepSounds.volume = Random.Range(0.1f, 0.3f);
-            FootstepSounds.pitch = Random.Range(0.5f, 1f);
-            FootstepSounds.PlayOneShot(grassSounds[Random.Range(0, grassSounds.Length)]);
+            if (sound == "grass")
+            {
+                FootstepSounds.volume = Random.Range(0.1f, 0.3f);
+                FootstepSounds.pitch = Random.Range(0.5f, 1f);
+                FootstepSounds.PlayOneShot(grassSounds[Random.Range(0, grassSounds.Length)]);
+            }
+            else if (sound == "stone")
+            {
+                FootstepSounds.volume = Random.Range(0.1f, 0.3f);
+                FootstepSounds.pitch = Random.Range(0.5f, 1f);
+                FootstepSounds.PlayOneShot(stoneSounds[Random.Range(0, stoneSounds.Length)]);
+            }
         }
     }
 

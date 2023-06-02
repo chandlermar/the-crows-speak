@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterControllerMovement : MonoBehaviour
@@ -12,6 +10,16 @@ public class CharacterControllerMovement : MonoBehaviour
     public float footstepDelay = 0.5f;
     Vector2 PlayerMouseInput;
     Vector3 MoveVector;
+
+    public float movementSpeed = 2f;         // Speed of character movement
+    public float bobbingSpeed = 0.1f;        // Speed of camera bobbing
+    public float bobbingAmount = 0.05f;      // Amount of camera bobbing
+
+    private float bobbingTimer = 0.0f;
+    private float midpoint = 0.0f;
+    private bool isMoving = false;
+    private bool wasMoving;
+
 
     float xRot;
 
@@ -38,6 +46,7 @@ public class CharacterControllerMovement : MonoBehaviour
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
         controller = GetComponent<CharacterController>();
         speed = walkSpeed;
+        midpoint = playerCamera.localPosition.y;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -45,12 +54,13 @@ public class CharacterControllerMovement : MonoBehaviour
     {
         playerMovementInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
         PlayerMouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Mathf.Clamp(Input.GetAxisRaw("Mouse Y"), -90, 90));
-
+        wasMoving = isMoving; // Store the previous moving state
+        isMoving = playerMovementInput.magnitude >= 0.1f;
         MovePlayer();
         MoveCamera();
         Sprint();
     }
-
+    
     void MovePlayer()
     {
         if (controller.isGrounded)
@@ -78,7 +88,7 @@ public class CharacterControllerMovement : MonoBehaviour
             float timeSinceLastFootstep = Time.time - lastFootstepTime;
             if (timeSinceLastFootstep >= footstepDelay)
             {
-                AudioMgr.inst.PlayFootstep();
+                AudioMgr.inst.PlayFootstep(ChangeFootstepSound.inst.sound);
                 lastFootstepTime = Time.time;
             }
             lastMovementInput = transform.position;
@@ -93,6 +103,34 @@ public class CharacterControllerMovement : MonoBehaviour
 
         transform.Rotate(transform.rotation.x, PlayerMouseInput.x * mouseSensitivity, transform.rotation.z);
         playerCamera.transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
+
+        if (isMoving)
+        {
+            // Calculate bobbing motion
+            float waveslice = Mathf.Sin(bobbingTimer);
+            bobbingTimer += bobbingSpeed * Time.deltaTime * 2 * Mathf.PI;
+
+            // Apply bobbing motion to the camera
+            Vector3 newPosition = playerCamera.localPosition;
+            if (waveslice != 0)
+            {
+                float translateChange = waveslice * bobbingAmount;
+                newPosition.y = midpoint + translateChange;
+            }
+            else
+            {
+                newPosition.y = midpoint;
+            }
+
+            playerCamera.localPosition = newPosition;
+        }
+        
+        // Check if the player has stopped moving
+        if (wasMoving && !isMoving)
+        {
+            // Reset the camera position to the initial midpoint
+            playerCamera.localPosition = new Vector3(playerCamera.localPosition.x, midpoint, playerCamera.localPosition.z);
+        }
     }
 
     void Sprint()
