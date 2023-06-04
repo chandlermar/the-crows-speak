@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class CharacterControllerMovement : MonoBehaviour
 {
+    public static CharacterControllerMovement inst;
+
     Vector3 velocity;
     Vector3 playerMovementInput;
     private Vector3 lastMovementInput;
@@ -43,6 +45,7 @@ public class CharacterControllerMovement : MonoBehaviour
 
     void Start()
     {
+        inst = this;
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
         controller = GetComponent<CharacterController>();
         speed = walkSpeed;
