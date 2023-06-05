@@ -20,6 +20,7 @@ TagManager:
   - TomatoStatic
   - CabbageLeft
   - CabbageRight
+  - Quest
   layers:
   - Default
   - TransparentFX
