@@ -7,11 +7,13 @@ using UnityEngine;
 
 public class Day1Quests : MonoBehaviour
 {
+    //Active -> Inactive
     public GameObject tomatoLeft;
     public GameObject tomatoRight;
     public GameObject cabbageLeft;
     public GameObject cabbageRight;
 
+    //Inactive -> Active
     public GameObject tomatoGroup;
     public GameObject cabbageGroup;
 
@@ -47,4 +49,17 @@ public class Day1Quests : MonoBehaviour
     {
         cabbageGroup.SetActive(true);
     }
+
+    public void Quest7()
+    {
+        //Sleep
+
+        //Object Cleanup
+        tomatoLeft.SetActive(true);
+        tomatoRight.SetActive(true);
+        cabbageLeft.SetActive(true);
+        cabbageRight.SetActive(true);
+
+        //Launch into day2
+}
 }

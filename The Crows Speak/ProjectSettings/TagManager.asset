@@ -27,6 +27,7 @@ TagManager:
   - Quest4
   - Quest5
   - Quest6
+  - Quest7
   layers:
   - Default
   - TransparentFX

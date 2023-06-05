@@ -93,6 +93,19 @@ public class QuestManager : MonoBehaviour
                     }
                 }
                 break;
+
+            case 7:
+                if (other.CompareTag("Quest" + questNumber.ToString()))
+                {
+                    text = "Press E to Sleep.";
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        Day1Quests.inst.Quest7();
+                        questNumber++;
+                        text = "";
+                    }
+                }
+                break;
         }
         
 
@@ -128,6 +141,9 @@ public class QuestManager : MonoBehaviour
                 break;
             case 6:
                 MissionText.text = "Deposit Cabbage";
+                break;
+            case 7:
+                MissionText.text = "Go To Sleep";
                 break;
         }    
     }
