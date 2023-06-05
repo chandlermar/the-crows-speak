@@ -11,13 +11,14 @@ public class QuestManager : MonoBehaviour
     public Text InteractText;
     private string text;
     public int questNumber = 1;
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Quest")) 
-        {
-            switch(questNumber)
-            {
-                case 1:
+        
+           switch(questNumber)
+           {
+               case 1:
+                if (other.CompareTag("Quest" + questNumber.ToString()))
+                {
                     Debug.Log("mission 1");
                     text = "Press E to harvest.";
                     if (Input.GetKeyDown(KeyCode.E))
@@ -26,24 +27,25 @@ public class QuestManager : MonoBehaviour
                         questNumber++;
                         text = "";
                     }
-                    break;
-                case 2:
-                    Debug.Log("Mission 2");
-                    text = "Press E to harvest.";
-                    if (Input.GetKeyDown(KeyCode.E))
-                    {
-                        Day1Quests.inst.Quest2();
-                        questNumber++;
-                        text = "";
-                    }
-                    break;
+                }
+                   break;
+               case 2:
+                   Debug.Log("Mission 2");
+                   text = "Press E to harvest.";
+                   if (Input.GetKeyDown(KeyCode.E))
+                   {
+                       Day1Quests.inst.Quest2();
+                       questNumber++;
+                       text = "";
+                   }
+                   break;
             }
-        }
+        
 
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Quest"))
+        if (other.CompareTag("Quest" + questNumber.ToString()))
         {
             text = "";
         }

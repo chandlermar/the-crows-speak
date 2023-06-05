@@ -21,6 +21,8 @@ TagManager:
   - CabbageLeft
   - CabbageRight
   - Quest
+  - Quest1
+  - Quest2
   layers:
   - Default
   - TransparentFX

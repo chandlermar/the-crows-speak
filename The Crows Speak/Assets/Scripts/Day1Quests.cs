@@ -18,7 +18,9 @@ public class Day1Quests : MonoBehaviour
 
     public void Quest1()
     {
+        Debug.Log("pre");
         tomatoLeft.transform.parent.gameObject.SetActive(false);
+        Debug.Log("post");
     }
 
     public void Quest2()
