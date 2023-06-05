@@ -9,6 +9,11 @@ public class Day1Quests : MonoBehaviour
 {
     public GameObject tomatoLeft;
     public GameObject tomatoRight;
+    public GameObject cabbageLeft;
+    public GameObject cabbageRight;
+
+    public GameObject tomatoGroup;
+    public GameObject cabbageGroup;
 
     public static Day1Quests inst;
     private void Awake()
@@ -18,13 +23,28 @@ public class Day1Quests : MonoBehaviour
 
     public void Quest1()
     {
-        Debug.Log("pre");
-        tomatoLeft.transform.parent.gameObject.SetActive(false);
-        Debug.Log("post");
+        tomatoLeft.SetActive(false);
     }
 
     public void Quest2()
     {
-        tomatoRight.transform.parent.gameObject.SetActive(false);
+        tomatoRight.SetActive(false);
+    }
+
+    public void Quest3()
+    {
+        tomatoGroup.SetActive(true);
+    }
+    public void Quest4()
+    {
+        cabbageLeft.SetActive(false);
+    }
+    public void Quest5()
+    {
+        cabbageRight.SetActive(false);
+    }
+    public void Quest6()
+    {
+        cabbageGroup.SetActive(true);
     }
 }

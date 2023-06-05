@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class QuestManager : MonoBehaviour
 {
     public Text InteractText;
+    public Text MissionText;
     private string text;
     public int questNumber = 1;
     private void OnTriggerStay(Collider other)
@@ -16,11 +17,10 @@ public class QuestManager : MonoBehaviour
         
            switch(questNumber)
            {
-               case 1:
+            case 1:
                 if (other.CompareTag("Quest" + questNumber.ToString()))
                 {
-                    Debug.Log("mission 1");
-                    text = "Press E to harvest.";
+                    text = "Spam E to Harvest.";
                     if (Input.GetKeyDown(KeyCode.E))
                     {
                         Day1Quests.inst.Quest1();
@@ -28,18 +28,72 @@ public class QuestManager : MonoBehaviour
                         text = "";
                     }
                 }
-                   break;
-               case 2:
-                   Debug.Log("Mission 2");
-                   text = "Press E to harvest.";
-                   if (Input.GetKeyDown(KeyCode.E))
-                   {
-                       Day1Quests.inst.Quest2();
-                       questNumber++;
-                       text = "";
-                   }
-                   break;
-            }
+                break;
+
+            case 2:
+                    if (other.CompareTag("Quest" + questNumber.ToString()))
+                    {
+                        text = "Spam E to Harvest.";
+                        if (Input.GetKeyDown(KeyCode.E))
+                        {
+                            Day1Quests.inst.Quest2();
+                            questNumber++;
+                            text = "";
+                        }
+                    }
+                    break;
+
+            case 3:
+                if (other.CompareTag("Quest" + questNumber.ToString()))
+                {
+                    text = "Press E to Deposit.";
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        Day1Quests.inst.Quest3();
+                        questNumber++;
+                        text = "";
+                    }
+                }
+                    break;
+            case 4:
+                if (other.CompareTag("Quest" + questNumber.ToString()))
+                {
+                    text = "Press E to harvest.";
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        Day1Quests.inst.Quest4();
+                        questNumber++;
+                        text = "";
+                    }
+                }
+                break;
+
+            case 5:
+                if (other.CompareTag("Quest" + questNumber.ToString()))
+                {
+                    text = "Press E to harvest.";
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        Day1Quests.inst.Quest5();
+                        questNumber++;
+                        text = "";
+                    }
+                }
+                break;
+
+            case 6:
+                if (other.CompareTag("Quest" + questNumber.ToString()))
+                {
+                    text = "Press E to Deposit.";
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        Day1Quests.inst.Quest6();
+                        questNumber++;
+                        text = "";
+                    }
+                }
+                break;
+        }
         
 
     }
@@ -54,5 +108,27 @@ public class QuestManager : MonoBehaviour
     private void Update()
     {
         InteractText.GetComponent<Text>().text = text;
+
+        switch (questNumber)
+        {
+            case 1:
+                MissionText.text = "Harvest Tomatos";
+                break;
+            case 2:
+                MissionText.text = "Harvest Tomatos";
+                break;
+            case 3:
+                MissionText.text = "Deposit Tomatos";
+                break;
+            case 4:
+                MissionText.text = "Harvest Cabbage";
+                break;
+            case 5:
+                MissionText.text = "Harvest Cabbage";
+                break;
+            case 6:
+                MissionText.text = "Deposit Cabbage";
+                break;
+        }    
     }
 }
