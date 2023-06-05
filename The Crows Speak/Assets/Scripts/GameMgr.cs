@@ -3,8 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameMgr : MonoBehaviour
-{ 
-    private enum MissionState
+{
+    public static GameMgr inst;
+
+    private void Awake()
+    {
+        inst = this;
+    }
+    public enum MissionState
     {
         Mission1,
         Mission2,
@@ -12,20 +18,20 @@ public class GameMgr : MonoBehaviour
 
     }
 
-    private enum Mission1Substates
+    public enum Mission1Substates
     {
-        mission1sub1, //pick up pail
-        mission1sub2, //water tomatos
-        mission1sub3, //pick up tomato bin
-        mission1sub4, //drop tomatos inside
+        mission1sub1, //harvest tomatos
+        mission1sub2, //harvest cabbage
+        mission1sub3, //place tomatos
+        mission1sub4, //place cabbage
         mission1sub5, //sleep!
         // Add more mission states as needed
     }
 
-    private MissionState currentMissionState;
+    public MissionState currentMissionState;
 
     [Header("Mission1 Checks")]
-    private Mission1Substates mission1activesub;
+    public Mission1Substates mission1activesub;
 
     public float fireRate = 1f;
     private float fireCooldown = 0f;
@@ -96,60 +102,27 @@ public class GameMgr : MonoBehaviour
         {
            
             case Mission1Substates.mission1sub1:
-                if (Input.GetMouseButtonDown(1))
+                if (QuestInteraction.inst.TomatoLeftActive || QuestInteraction.inst.TomatoRightActive)
                 {
-                    // Create a raycast from the camera's position and forward direction
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    RaycastHit hit;
-
-                    // Perform the raycast
-                    if (Physics.Raycast(ray, out hit, maxRaycastDistance))
+                    if (Input.GetKeyDown(KeyCode.E))
                     {
-                        // Check if the raycast hit something
-                        if (hit.collider != null)
-                        {
-
-                            if (hit.collider.CompareTag("Pail"))
-                            {
-                                // Access the hit object or do something with the hit information
-                                GameObject hitObject = hit.collider.gameObject;
-                                inventory = hitObject;
-                                hitObject.SetActive(false);
-                                pailToInherit.SetActive(true);
-                                mission1activesub = Mission1Substates.mission1sub2;
-                            }
-                        }
+                       Debug.Log("Harvested Tomatos");
+                       //Play harvest soundbite
+                       mission1activesub = Mission1Substates.mission1sub2;
                     }
                 }
+                
                 break;
 
 
             case Mission1Substates.mission1sub2:
-                if (Input.GetMouseButtonDown(0))
+                if (QuestInteraction.inst.CabbageLeftActive || QuestInteraction.inst.CabbageRightActive)
                 {
-                    // Create a raycast from the camera's position and forward direction
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    RaycastHit hit;
-
-                    // Perform the raycast
-                    if (Physics.Raycast(ray, out hit, maxRaycastDistance))
+                    if (Input.GetKeyDown(KeyCode.E))
                     {
-                        // Check if the raycast hit something
-                        if (hit.collider != null)
-                        {
-                            if (hit.collider.CompareTag("Tomato"))
-                            {
-                                Debug.Log("hit tomato");
-                                // Access the hit object or do something with the hit information
-                                GameObject hitObject = hit.collider.gameObject;
-                                Debug.Log(hitObject.name);
-                                inventory = null;
-                                pailStatic.SetActive(true);
-                                pailToInherit.SetActive(false);
-                                UIMgr.inst.sub1.color = Color.green;
-                                mission1activesub = Mission1Substates.mission1sub3;
-                            }
-                        }
+                        Debug.Log("Harvested Cabbage");
+                        //Play harvest soundbite
+                        mission1activesub = Mission1Substates.mission1sub3;
                     }
                 }
                 break;

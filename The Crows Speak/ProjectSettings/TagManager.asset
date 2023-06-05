@@ -15,6 +15,11 @@ TagManager:
   - Bucket
   - Home
   - Stone
+  - TomatoLeft
+  - TomatoRight
+  - TomatoStatic
+  - CabbageLeft
+  - CabbageRight
   layers:
   - Default
   - TransparentFX
