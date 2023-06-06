@@ -11,6 +11,8 @@ public class Day1Quests : MonoBehaviour
 {
     public bool isNight = false;
 
+    public Light Sun;
+
     //Active -> Inactive
     [Header("Day 1")]
     public GameObject tomatoLeft;
@@ -85,7 +87,12 @@ public class Day1Quests : MonoBehaviour
         cabbageRight.SetActive(true);
 
         StopAll();
+        Sun.intensity = 143f;
+        Sun.color = new Color(101, 10, 10);
+        Debug.Log("Intesity: " + Sun.intensity);
+        Debug.Log("Color: " + Sun.color);
         Invoke("WakeUp", 5);
+
     }
 
     public void Quest8()
