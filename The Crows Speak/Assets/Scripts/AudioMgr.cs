@@ -14,7 +14,7 @@ public class AudioMgr : MonoBehaviour
 
     [Header("Daytime Background Sounds")]
     public AudioSource DaytimeBackgroundSource;
-    public AudioClip birdSounds;
+    public AudioClip windSounds;
 
     [Header("House Background Sounds")]
     public AudioSource HouseAmbienceSource;
@@ -27,6 +27,7 @@ public class AudioMgr : MonoBehaviour
     public AudioSource textSource;
 
     [SerializeField] AudioSource DiegeticSound;
+    public AudioClip doorSound;
 
 
 
@@ -73,13 +74,16 @@ public class AudioMgr : MonoBehaviour
         }
     }
 
-    void PlayBirds()
+    public void PlayBirds()
     {
         DaytimeBackgroundSource.volume = 0.3f;
         DaytimeBackgroundSource.loop = true;
-        DaytimeBackgroundSource.PlayOneShot(birdSounds);
+        DaytimeBackgroundSource.PlayOneShot(windSounds);
     }
 
-    
+    public void PlayDoor()
+    {
+        DiegeticSound.PlayOneShot(doorSound);
+    }
 
 }

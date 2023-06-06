@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
 //ALL THE THINGS THAT ARE GOING TO HAPPEN
 
 
 public class Day1Quests : MonoBehaviour
 {
+    public bool isNight = false;
+
     //Active -> Inactive
+    [Header("Day 1")]
     public GameObject tomatoLeft;
     public GameObject tomatoRight;
     public GameObject cabbageLeft;
@@ -16,11 +21,26 @@ public class Day1Quests : MonoBehaviour
     //Inactive -> Active
     public GameObject tomatoGroup;
     public GameObject cabbageGroup;
+    public Image sleep;
 
     public static Day1Quests inst;
     private void Awake()
     {
         inst = this;
+    }
+
+    private void StopAll()
+    {
+        AudioMgr.inst.DaytimeBackgroundSource.Stop();
+    }
+    private void WakeUp()
+    {
+        sleep.GetComponent<Animation>().Play("FadeIn");
+        AudioMgr.inst.PlayDoor();
+        if (!isNight)
+        {
+            AudioMgr.inst.PlayBirds();
+        }
     }
 
     public void Quest1()
@@ -52,7 +72,10 @@ public class Day1Quests : MonoBehaviour
 
     public void Quest7()
     {
-        //Sleep
+        sleep.GetComponent<Animation>().Play("FadeOut");
+        AudioMgr.inst.PlayDoor();
+        //sleep.GetComponent<Animation>().Play("FadeIn"); || FADE BACK IN
+        //AudioMgr.inst.PlayDoor();
 
         //Object Cleanup
         tomatoLeft.SetActive(true);
@@ -60,6 +83,12 @@ public class Day1Quests : MonoBehaviour
         cabbageLeft.SetActive(true);
         cabbageRight.SetActive(true);
 
-        //Launch into day2
-}
-}
+        StopAll();
+        Invoke("WakeUp", 5);
+    }
+
+    public void Quest8()
+    {
+        
+    }
+} 

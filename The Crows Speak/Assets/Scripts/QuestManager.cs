@@ -106,6 +106,19 @@ public class QuestManager : MonoBehaviour
                     }
                 }
                 break;
+
+            case 8:
+                if (other.CompareTag("Quest" + questNumber.ToString()))
+                {
+                    text = "Press E to plant tomatoes";
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        Day1Quests.inst.Quest8();
+                        questNumber++;
+                        text = "";
+                    }
+                }
+                break;
         }
         
 
