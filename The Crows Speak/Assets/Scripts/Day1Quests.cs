@@ -51,6 +51,7 @@ public class Day1Quests : MonoBehaviour
     public void Quest2()
     {
         tomatoRight.SetActive(false);
+        DialogueMgr.inst.ActivateTomatoDialogue();
     }
 
     public void Quest3()

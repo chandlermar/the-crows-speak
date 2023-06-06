@@ -53,6 +53,7 @@ public class AudioMgr : MonoBehaviour
 
     public void PlayTextSound(AudioClip sound)
     {
+        textSource.volume = .1f;
         textSource.PlayOneShot(sound);
     }
     public void PlayFootstep(string sound)
