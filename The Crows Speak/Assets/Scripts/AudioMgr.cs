@@ -54,6 +54,7 @@ public class AudioMgr : MonoBehaviour
     public void PlayTextSound(AudioClip sound)
     {
         textSource.volume = .1f;
+        textSource.pitch = Random.Range(0.5f, 2f);
         textSource.PlayOneShot(sound);
     }
     public void PlayFootstep(string sound)

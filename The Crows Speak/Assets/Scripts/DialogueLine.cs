@@ -20,7 +20,7 @@ namespace DialogueSystem
 
 
         [Header("Sound Parameters")]
-        [SerializeField] private AudioClip sound;
+        [SerializeField] private AudioClip[] sound;
 
         private void Start()
         {

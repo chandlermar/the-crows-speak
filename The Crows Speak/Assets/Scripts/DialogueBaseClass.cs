@@ -10,7 +10,7 @@ namespace DialogueSystem
     public class DialogueBaseClass : MonoBehaviour
     {
         public bool finished;
-        protected IEnumerator WriteText(string input, Text textHolder, Color textColor, Font textFont, float delay, AudioClip sound, float delayBetweenLines, int size)
+        protected IEnumerator WriteText(string input, Text textHolder, Color textColor, Font textFont, float delay, AudioClip[] sound, float delayBetweenLines, int size)
         {
             textHolder.color = textColor;
             textHolder.font = textFont;
@@ -19,7 +19,8 @@ namespace DialogueSystem
             for (int i = 0; i < input.Length; i++)
             {
                 textHolder.text += input[i];
-                AudioMgr.inst.PlayTextSound(sound);
+                int soundChoice = Random.Range(0, sound.Length);
+                AudioMgr.inst.PlayTextSound(sound[soundChoice]);
                 yield return new WaitForSeconds(delay);
             }
 
