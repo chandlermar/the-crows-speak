@@ -48,12 +48,14 @@ public class Day1Quests : MonoBehaviour
     public void Quest1()
     {
         tomatoLeft.SetActive(false);
+        AudioMgr.inst.PlayHarvest();
     }
 
     public void Quest2()
     {
         tomatoRight.SetActive(false);
         DialogueMgr.inst.ActivateTomatoDialogue();
+        AudioMgr.inst.PlayHarvest();
     }
 
     public void Quest3()
@@ -63,10 +65,12 @@ public class Day1Quests : MonoBehaviour
     public void Quest4()
     {
         cabbageLeft.SetActive(false);
+        AudioMgr.inst.PlayHarvest();
     }
     public void Quest5()
     {
         cabbageRight.SetActive(false);
+        AudioMgr.inst.PlayHarvest();
     }
     public void Quest6()
     {

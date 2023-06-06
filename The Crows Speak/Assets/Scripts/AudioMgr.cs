@@ -9,6 +9,8 @@ public class AudioMgr : MonoBehaviour
 
     public static AudioMgr inst;
 
+    private static float defaultPitch = 1.0f;
+
     [HideInInspector]
     public string sceneName;
 
@@ -28,6 +30,7 @@ public class AudioMgr : MonoBehaviour
 
     [SerializeField] AudioSource DiegeticSound;
     public AudioClip doorSound;
+    public AudioClip harvestSound;
 
 
 
@@ -85,7 +88,14 @@ public class AudioMgr : MonoBehaviour
 
     public void PlayDoor()
     {
+        DiegeticSound.pitch = defaultPitch;
+        DiegeticSound.volume = 0.6f;
         DiegeticSound.PlayOneShot(doorSound);
     }
 
+    public void PlayHarvest()
+    {
+        DiegeticSound.pitch = Random.Range(0.8f, 1.2f);
+        DiegeticSound.PlayOneShot(harvestSound);
+    }
 }
