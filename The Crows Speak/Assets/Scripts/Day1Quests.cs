@@ -38,7 +38,8 @@ public class Day1Quests : MonoBehaviour
     public GameObject playerWateringCan;
 
     [Header("Night 1")]
-    public GameObject tertiary;
+    public GameObject NightEyes;
+    public GameObject Pentagram;
 
 
     public static Day1Quests inst;
@@ -50,15 +51,21 @@ public class Day1Quests : MonoBehaviour
     public void Night1Prep()
     {
         Sun.intensity = 10f;
+        NightEyes.SetActive(true);
+        Pentagram.SetActive(true);
     }
 
     public void Day1Cleanup()
     {
         //Object Cleanup from day1
         tomatoLeft.SetActive(true);
+        tomatoLeft.transform.localScale = new Vector3(1f, 0.3f, 1f);
         tomatoRight.SetActive(true);
+        tomatoRight.transform.localScale = new Vector3(1f, 0.3f, 1f);
         cabbageLeft.SetActive(true);
+        cabbageLeft.transform.localScale = new Vector3(1f, 0.3f, 1f);
         cabbageRight.SetActive(true);
+        cabbageRight.transform.localScale = new Vector3(1f, 0.3f, 1f);
         day1Crows.SetActive(false);
         scarecrow.GetComponent<MeshRenderer>().material.color = Color.red;
     }
@@ -76,7 +83,6 @@ public class Day1Quests : MonoBehaviour
     {
         BirdController.GetComponent<lb_BirdController>().idealNumberOfBirds = 0;
         BirdController.GetComponent<lb_BirdController>().maximumNumberOfBirds = 0;
-
     }
 
     private void StopAll()
@@ -168,11 +174,14 @@ public class Day1Quests : MonoBehaviour
 
     public void Quest14()
     {
-        
+        tomatoLeft.transform.localScale = new Vector3(1f, 1f, 1f);
+        tomatoRight.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
     public void Quest15()
     {
+        cabbageLeft.transform.localScale = new Vector3(1f, 1f, 1f);
+        cabbageRight.transform.localScale = new Vector3(1f, 1f, 1f);
         playerWateringCan.SetActive(false);
     }
 
