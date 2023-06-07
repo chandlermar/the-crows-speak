@@ -235,6 +235,20 @@ public class QuestManager : MonoBehaviour
                     }
                 }
                 break;
+
+            case 18:
+                if (other.CompareTag("Quest" + questNumber.ToString()))
+                {
+                    text = "Misc.";
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        Day1Quests.inst.Quest18();
+                        questNumber++;
+                        text = "";
+                    }
+                }
+                break;
+                break;
         }
         
 
@@ -303,6 +317,9 @@ public class QuestManager : MonoBehaviour
                 break;
             case 17:
                 MissionText.text = "Sleep";
+                break;
+            case 18:
+                MissionText.text = "WIP";
                 break;
         }    
     }

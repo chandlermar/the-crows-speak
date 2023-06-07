@@ -34,10 +34,19 @@ public class Day1Quests : MonoBehaviour
     public GameObject wateringCan;
     public GameObject playerWateringCan;
 
+    [Header("Night 1")]
+    public GameObject tertiary;
+
+
     public static Day1Quests inst;
     private void Awake()
     {
         inst = this;
+    }
+
+    public void Night1Prep()
+    {
+        Sun.intensity = 10f;
     }
 
     public void Day1Cleanup()
@@ -172,8 +181,13 @@ public class Day1Quests : MonoBehaviour
         //sleep.GetComponent<Animation>().Play("FadeIn"); || FADE BACK IN
         //AudioMgr.inst.PlayDoor();
         Day2Cleanup();
-
+        Night1Prep();
         StopAll();
         Invoke("WakeUp", 5);
+    }
+
+    public void Quest18()
+    {
+
     }
 } 
