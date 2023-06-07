@@ -36,6 +36,8 @@ TagManager:
   - Quest13
   - Quest14
   - Quest15
+  - Quest16
+  - Quest17
   layers:
   - Default
   - TransparentFX
