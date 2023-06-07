@@ -13,12 +13,15 @@ public class Day1Quests : MonoBehaviour
 
     public Light Sun;
 
+    public GameObject BirdController;
+
     //Active -> Inactive
     [Header("Day 1")]
     public GameObject tomatoLeft;
     public GameObject tomatoRight;
     public GameObject cabbageLeft;
     public GameObject cabbageRight;
+    public GameObject day1Crows;
 
     //Inactive -> Active
     public GameObject tomatoGroup;
@@ -56,6 +59,7 @@ public class Day1Quests : MonoBehaviour
         tomatoRight.SetActive(true);
         cabbageLeft.SetActive(true);
         cabbageRight.SetActive(true);
+        day1Crows.SetActive(false);
         scarecrow.GetComponent<MeshRenderer>().material.color = Color.red;
     }
 
@@ -65,10 +69,13 @@ public class Day1Quests : MonoBehaviour
         scatteredTomatoes.SetActive(true);
         scatteredCabbages.SetActive(true);
         wateringCan.SetActive(true);
+        BirdController.GetComponent<lb_BirdController>().idealNumberOfBirds = 5;
     }
 
     public void Day2Cleanup()
     {
+        BirdController.GetComponent<lb_BirdController>().idealNumberOfBirds = 0;
+        BirdController.GetComponent<lb_BirdController>().maximumNumberOfBirds = 0;
 
     }
 
