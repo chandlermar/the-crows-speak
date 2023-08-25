@@ -239,7 +239,7 @@ public class QuestManager : MonoBehaviour
             case 18:
                 if (other.CompareTag("Quest" + questNumber.ToString()))
                 {
-                    text = "Misc.";
+                    text = "Press E to sacrifice yourself.";
                     if (Input.GetKey(KeyCode.E))
                     {
                         Day1Quests.inst.Quest18();
@@ -318,7 +318,7 @@ public class QuestManager : MonoBehaviour
                 MissionText.text = "Sleep";
                 break;
             case 18:
-                MissionText.text = "WIP";
+                MissionText.text = "Feed the Crows";
                 break;
         }    
     }

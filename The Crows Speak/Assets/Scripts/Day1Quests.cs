@@ -40,6 +40,7 @@ public class Day1Quests : MonoBehaviour
     [Header("Night 1")]
     public GameObject NightEyes;
     public GameObject Pentagram;
+    public GameObject PentagramCollider;
 
 
     public static Day1Quests inst;
@@ -53,7 +54,7 @@ public class Day1Quests : MonoBehaviour
         Sun.intensity = 10f;
         NightEyes.SetActive(true);
         Pentagram.SetActive(true);
-        StartCoroutine(MoveChildrenTowardsPlayer());
+        PentagramCollider.SetActive(true);
     }
 
     public void Day1Cleanup()
@@ -205,7 +206,7 @@ public class Day1Quests : MonoBehaviour
 
     public void Quest18()
     {
-        
+        StartCoroutine(MoveChildrenTowardsPlayer());
     }
 
 
@@ -213,18 +214,27 @@ public class Day1Quests : MonoBehaviour
 
     private IEnumerator MoveChildrenTowardsPlayer()
     {
+        Transform[] nightEyesChildren = NightEyes.GetComponentsInChildren<Transform>();
+
         while (true)
         {
-            Transform[] nightEyesChildren = NightEyes.GetComponentsInChildren<Transform>();
-            // Loop through all child transforms
+            Vector3 targetPosition = PlayerMgr.inst.playerBody.position;
+
             foreach (Transform child in nightEyesChildren)
             {
-                Vector3 targetPosition = PlayerMgr.inst.playerBody.position; // Player's position as the target
-                Vector3 newPosition = Vector3.MoveTowards(child.position, targetPosition, Time.deltaTime * 6);
+                // Calculate the direction to the target position
+                Vector3 moveDirection = targetPosition - child.position;
+
+                // Rotate the child to face the target position
+                Quaternion rotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+                child.rotation = rotation;
+
+                // Move the child towards the target position
+                Vector3 newPosition = child.position + moveDirection.normalized * Time.deltaTime * 10; // Adjusted speed
                 child.position = newPosition;
             }
 
-            yield return null; // Wait for the next frame
+            yield return null;
         }
     }
 } 
