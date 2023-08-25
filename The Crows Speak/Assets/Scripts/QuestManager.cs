@@ -21,7 +21,7 @@ public class QuestManager : MonoBehaviour
                 if (other.CompareTag("Quest" + questNumber.ToString()))
                 {
                     text = "Spam E to Harvest.";
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (Input.GetKey(KeyCode.E))
                     {
                         Day1Quests.inst.Quest1();
                         questNumber++;
@@ -34,7 +34,7 @@ public class QuestManager : MonoBehaviour
                     if (other.CompareTag("Quest" + questNumber.ToString()))
                     {
                         text = "Spam E to Harvest.";
-                        if (Input.GetKeyDown(KeyCode.E))
+                        if (Input.GetKey(KeyCode.E))
                         {
                             Day1Quests.inst.Quest2();
                             questNumber++;
@@ -47,7 +47,7 @@ public class QuestManager : MonoBehaviour
                 if (other.CompareTag("Quest" + questNumber.ToString()))
                 {
                     text = "Press E to Deposit.";
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (Input.GetKey(KeyCode.E))
                     {
                         Day1Quests.inst.Quest3();
                         questNumber++;
@@ -59,7 +59,7 @@ public class QuestManager : MonoBehaviour
                 if (other.CompareTag("Quest" + questNumber.ToString()))
                 {
                     text = "Press E to Harvest.";
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (Input.GetKey(KeyCode.E))
                     {
                         Day1Quests.inst.Quest4();
                         questNumber++;
@@ -72,7 +72,7 @@ public class QuestManager : MonoBehaviour
                 if (other.CompareTag("Quest" + questNumber.ToString()))
                 {
                     text = "Press E to Harvest.";
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (Input.GetKey(KeyCode.E))
                     {
                         Day1Quests.inst.Quest5();
                         questNumber++;
@@ -85,7 +85,7 @@ public class QuestManager : MonoBehaviour
                 if (other.CompareTag("Quest" + questNumber.ToString()))
                 {
                     text = "Press E to Deposit.";
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (Input.GetKey(KeyCode.E))
                     {
                         Day1Quests.inst.Quest6();
                         questNumber++;
@@ -98,7 +98,7 @@ public class QuestManager : MonoBehaviour
                 if (other.CompareTag("Quest" + questNumber.ToString()))
                 {
                     text = "Press E to Plant Scarecrow";
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (Input.GetKey(KeyCode.E))
                     {
                         Day1Quests.inst.Quest7();
                         questNumber++;
@@ -111,7 +111,7 @@ public class QuestManager : MonoBehaviour
                 if (other.CompareTag("Quest" + questNumber.ToString()))
                 {
                     text = "Press E to Sleep.";
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (Input.GetKey(KeyCode.E))
                     {
                         Day1Quests.inst.Quest8();
                         questNumber++;
@@ -123,7 +123,7 @@ public class QuestManager : MonoBehaviour
                 if (other.CompareTag("Quest" + questNumber.ToString()))
                 {
                     text = "Press E to Grab Tomatoes.";
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (Input.GetKey(KeyCode.E))
                     {
                         Day1Quests.inst.Quest9();
                         questNumber++;
@@ -136,7 +136,7 @@ public class QuestManager : MonoBehaviour
                 if (other.CompareTag("Quest" + questNumber.ToString()))
                 {
                     text = "Press E to Deposit.";
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (Input.GetKey(KeyCode.E))
                     {
                         Day1Quests.inst.Quest10();
                         questNumber++;
@@ -149,7 +149,7 @@ public class QuestManager : MonoBehaviour
                 if (other.CompareTag("Quest" + questNumber.ToString()))
                 {
                     text = "Press E to Grab Cabbage.";
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (Input.GetKey(KeyCode.E))
                     {
                         Day1Quests.inst.Quest11();
                         questNumber++;
@@ -162,7 +162,7 @@ public class QuestManager : MonoBehaviour
                 if (other.CompareTag("Quest" + questNumber.ToString()))
                 {
                     text = "Press E to Deposit.";
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (Input.GetKey(KeyCode.E))
                     {
                         Day1Quests.inst.Quest12();
                         questNumber++;
@@ -175,7 +175,7 @@ public class QuestManager : MonoBehaviour
                 if (other.CompareTag("Quest" + questNumber.ToString()))
                 {
                     text = "Press E to Pick Up.";
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (Input.GetKey(KeyCode.E))
                     {
                         Day1Quests.inst.Quest13();
                         questNumber++;
@@ -188,7 +188,7 @@ public class QuestManager : MonoBehaviour
                 if (other.CompareTag("Quest" + questNumber.ToString()))
                 {
                     text = "Press E to Water Crops.";
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (Input.GetKey(KeyCode.E))
                     {
                         Day1Quests.inst.Quest14();
                         questNumber++;
@@ -201,7 +201,7 @@ public class QuestManager : MonoBehaviour
                 if (other.CompareTag("Quest" + questNumber.ToString()))
                 {
                     text = "Press E to Water Crops.";
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (Input.GetKey(KeyCode.E))
                     {
                         Day1Quests.inst.Quest15();
                         questNumber++;
@@ -214,7 +214,7 @@ public class QuestManager : MonoBehaviour
                 if (other.CompareTag("Quest" + questNumber.ToString()))
                 {
                     text = "Press E to Repair.";
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (Input.GetKey(KeyCode.E))
                     {
                         Day1Quests.inst.Quest16();
                         questNumber++;
@@ -227,7 +227,7 @@ public class QuestManager : MonoBehaviour
                 if (other.CompareTag("Quest" + questNumber.ToString()))
                 {
                     text = "Press E to Sleep.";
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (Input.GetKey(KeyCode.E))
                     {
                         Day1Quests.inst.Quest17();
                         questNumber++;
@@ -240,14 +240,13 @@ public class QuestManager : MonoBehaviour
                 if (other.CompareTag("Quest" + questNumber.ToString()))
                 {
                     text = "Misc.";
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (Input.GetKey(KeyCode.E))
                     {
                         Day1Quests.inst.Quest18();
                         questNumber++;
                         text = "";
                     }
                 }
-                break;
                 break;
         }
         

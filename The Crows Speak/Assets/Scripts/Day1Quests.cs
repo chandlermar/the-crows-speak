@@ -53,6 +53,7 @@ public class Day1Quests : MonoBehaviour
         Sun.intensity = 10f;
         NightEyes.SetActive(true);
         Pentagram.SetActive(true);
+        StartCoroutine(MoveChildrenTowardsPlayer());
     }
 
     public void Day1Cleanup()
@@ -204,6 +205,26 @@ public class Day1Quests : MonoBehaviour
 
     public void Quest18()
     {
+        
+    }
 
+
+    /***   ***/
+
+    private IEnumerator MoveChildrenTowardsPlayer()
+    {
+        while (true)
+        {
+            Transform[] nightEyesChildren = NightEyes.GetComponentsInChildren<Transform>();
+            // Loop through all child transforms
+            foreach (Transform child in nightEyesChildren)
+            {
+                Vector3 targetPosition = PlayerMgr.inst.playerBody.position; // Player's position as the target
+                Vector3 newPosition = Vector3.MoveTowards(child.position, targetPosition, Time.deltaTime * 6);
+                child.position = newPosition;
+            }
+
+            yield return null; // Wait for the next frame
+        }
     }
 } 

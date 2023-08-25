@@ -18,6 +18,8 @@ public class GameMgr : MonoBehaviour
 
     }
 
+    public GameObject NightEyes;
+
     public enum Mission1Substates
     {
         mission1sub1, //harvest tomatos
@@ -228,5 +230,7 @@ public class GameMgr : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * maxRaycastDistance, Color.red);
        
     }
-    
+
+   
+
 }
